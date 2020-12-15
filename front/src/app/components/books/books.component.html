@@ -3,9 +3,26 @@
     <h5 class="card-header">Find Books</h5>
     <div class="card-body">  
         <form >
-            <input type="text"[(ngModel)]="form.name" name="name"/>
 
-            <button class="button" type="submit" (click)='onSubmit(form.name)'>Search</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Book Name</span>
+                </div>
+                <input type="text"[(ngModel)]="form.name" name="name" class="form-control" placeholder="Username" aria-label="Type your book name" aria-describedby="basic-addon1"/>
+              </div>
+            <button class="btn btn-primary" type="submit" (click)='onSubmit(form.name)'>Search</button>
         </form>
+    </div>
+    <div class="row space-row" >
+        <div class="col-sm-3" *ngFor="let item of books; let i = index">
+            <div class="card" >
+                <img class="card-img-top" src="{{item.volumeInfo.imageLinks.thumbnail}}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{item.volumeInfo.title}}</h5>
+                <p class="card-text">{{item.volumeInfo.description | slice:0:100}}</p>
+                <a href="{{item.volumeInfo.previewLink}}" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -9,6 +9,7 @@ import { BooksService } from '../../services/books.service';
 })
 export class BooksComponent implements OnInit {
   books:any;
+  data:any;
   form:any={name:''};
   constructor(private bookService: BooksService) { 
 
@@ -21,8 +22,9 @@ export class BooksComponent implements OnInit {
 
     // Process checkout data here
     this.bookService.getBooks(name).subscribe((books: any[]) => {
-      this.books = books;
-      console.log(books);
+      this.data = books;
+      this.books = this.data.books.items;
+      console.log(this.data);
     });
   }
 
