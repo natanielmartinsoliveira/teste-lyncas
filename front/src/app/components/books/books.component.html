@@ -1,0 +1,11 @@
+
+  <div class="card m-3">
+    <h5 class="card-header">Find Books</h5>
+    <div class="card-body">  
+        <form >
+            <input type="text"[(ngModel)]="form.name" name="name"/>
+
+            <button class="button" type="submit" (click)='onSubmit(form.name)'>Search</button>
+        </form>
+    </div>
+</div>
